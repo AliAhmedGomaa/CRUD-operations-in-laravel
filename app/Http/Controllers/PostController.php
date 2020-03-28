@@ -29,19 +29,41 @@ class PostController extends Controller
     }
 
     function create(){
-        return view('form');
+        $users = User::all();
+        
+        return view('create',[
+            'users' => $users
+        ]);
     }
 
     function store(){
 
         $request = request();
+
         Post::create([
             'name'=>$request->title,
             'Description'=>$request->Description,
             'user_id' =>  $request->user_id,
         ]);
-            // dd($request);
+            
+        return redirect()->route('post.index');
+    }
+
+    function destroy(Post $post){
+        // $request = request();
+        
+        // $postId = $request->post;
+
+            $post->delete();
+            // dd($post);
+        // dd($postId);
+        // Post::find($postId)->delete(); 
+
         return redirect()->route('post.index');
 
-    }
+        // Post::destroy($postToDelete);
+
+    } 
+
+
 }

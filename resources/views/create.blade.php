@@ -1,5 +1,5 @@
 
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('title')
 Post
@@ -18,6 +18,18 @@ Post
       <div class="form-group">
       <label for="exampleFormControlTextarea1">Description</label>
       <textarea name = "Description"class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">User</label>
+
+      <select name = "user_id" class="form-control">
+
+        @foreach ($users as $user)
+          <option value="{{$user->id}}">{{$user->name}}</option>
+        @endforeach
+
+      </select>
     </div>
 
 
