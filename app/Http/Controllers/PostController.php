@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+
 
 class PostController extends Controller
 {
@@ -36,34 +38,48 @@ class PostController extends Controller
         ]);
     }
 
-    function store(){
-
-        $request = request();
+    function store(StorePostRequest $request){
 
         Post::create([
-            'name'=>$request->title,
+            'name'=>$request->name,
             'Description'=>$request->Description,
             'user_id' =>  $request->user_id,
         ]);
-            
+
         return redirect()->route('post.index');
     }
 
+
     function destroy(Post $post){
-        // $request = request();
-        
-        // $postId = $request->post;
-
-            $post->delete();
-            // dd($post);
-        // dd($postId);
-        // Post::find($postId)->delete(); 
-
+        $post->delete();
         return redirect()->route('post.index');
-
-        // Post::destroy($postToDelete);
-
     } 
+
+    public function edit()
+    {
+        $request = request();
+        $post_id =$request->post;
+        $post = Post::find($post_id);
+        $users = User::all();
+        return view('edit',[
+            'post'=> $post,
+            'users'=>$users
+        ]);
+    }
+
+    public function update()
+    {
+        $request = request();
+        $post_id =$request->post;
+        Post::find($post_id )->update([
+            'name' =>$request->title,
+            'description'=>$request->description,
+            'user_id' =>$request->user_id,
+            ]);
+            
+            return redirect()->route('post.index');
+            
+        }
 
 
 }
