@@ -27,11 +27,11 @@ Main Page
                     <td scope="col">{{ $post->user ? $post->user->name : "Not exist" }}</td>
                     <td scope="col">{{$post-> created_at}}</td>
                     <td class="mx-0 p-0"><a href="{{route('post.show' , ['post' => $post->id])}}" class="btn px-3 btn-success" href=""> view </a></td>
-                    <td class="mx-0 p-0"><a href="" class="btn px-3 btn-primary" href=""> Edit </a></td>
+                    <td class="mx-0 p-0"><a href="{{route('post.edit',['post'=>$post->id])}}"class="btn px-3 btn-primary">Edit</a></td>
                   
-                    <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                    <td class="mx-0 p-0"><button type="button" class="btn px-3 btn-danger" data-toggle="modal" data-target="#exampleModal">
                       Delete
-                    </button></td>
+                    </button> </td>
                   </tr>
                 @endforeach
             </tbody>

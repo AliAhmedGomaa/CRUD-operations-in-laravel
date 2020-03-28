@@ -7,17 +7,31 @@ Post
 
 @section('content')
 
+
+
+
 <div style="width:800px" class="container my-5">
+  <h1>Create Post</h1>
+  @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <form method="POST" action="{{route('post.store')}}">
     @csrf
     <div class="form-group">
       <label for="exampleInputEmail1">Enter Post Title</label>
-      <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     </div>
 
       <div class="form-group">
       <label for="exampleFormControlTextarea1">Description</label>
-      <textarea name = "Description"class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <textarea name = "Description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
 
     <div class="form-group">
