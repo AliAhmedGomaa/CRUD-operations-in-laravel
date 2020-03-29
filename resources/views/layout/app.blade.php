@@ -16,7 +16,8 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">iti Blog</a>
+      <a class="navbar-brand" href="#">iti Blog</a>
+        
 
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

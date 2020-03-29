@@ -23,7 +23,7 @@ Main Page
                @foreach ($posts as $post)
                 <tr>
                     <td scope="col"># {{$post->id}}</td>
-                    <td scope="col">{{$post->name}}</td>
+                    <td scope="col">{{$post->slug}}</td>
                     <td scope="col">{{ $post->user ? $post->user->name : "Not exist" }}</td>
                     <td scope="col">{{$post-> created_at}}</td>
                     <td class="mx-0 p-0"><a href="{{route('post.show' , ['post' => $post->id])}}" class="btn px-3 btn-success" href=""> view </a></td>
